@@ -1,5 +1,5 @@
 import {createEffect} from "effector/compat";
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 import {IEpisodeType, IGetCurrentPortionEpisodes} from "../../types/episodes/episodes";
 
 /// основые данные по запросу
@@ -26,4 +26,10 @@ export const getAllEpisodes= createEffect<string,Array<IEpisodeType>,Error>(asyn
     }
     await getTheData(baseURL + "episode")
     return result
+})
+// запрос на получение эпизодов у конкретного персонажа
+export const getCharacterEpisodes = createEffect<Array<string>, Array<IEpisodeType> ,Error>( async ( urlsList ) => {
+    let data = await Promise.all(urlsList.map( url => axios.get<IEpisodeType>(url)))
+    let episodesArray : Array<IEpisodeType> = data.map( el => el.data)
+    return episodesArray
 })
