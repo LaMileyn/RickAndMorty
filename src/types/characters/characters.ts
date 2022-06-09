@@ -18,6 +18,6 @@ export interface ICharacter {
     origin : ICharacterOrigin,
     location : ICharacterLocation,
     image : string,
-    episodes : Array<string>
+    episode : Array<string>
 }
 // character
