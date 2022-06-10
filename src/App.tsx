@@ -5,6 +5,7 @@ import MainLayout from "./components/MainLayout/MainLayout";
 // photos for Background site
 import backgroundTop from './files/photos/head.jpg'
 import backCenter from './files/photos/bg.jpg'
+import MainPage from "./pages/MainPage/MainPage";
 
 
 
@@ -17,7 +18,7 @@ const App: FC = () => {
           <Row style={{ background: `#1c0026 url(${backCenter})`,backgroundPosition : "center top", backgroundSize : "100%",backgroundRepeat : "no-repeat", minHeight: '100vh'}}>
             <Routes>
               <Route path="/" element={<MainLayout/>}>
-                <Route index element={<div>Главная страница</div>}/>
+                <Route index element={<MainPage/>}/>
                 {/*<Route path="main" element={<div>Главная</div>}/>*/}
                 {/*<Route path="episode-info/:episodeId" element={<EpisodeDetailPage/>}/>*/}
                 {/*<Route path="character-info/:characterId" element={<CharacterPage/>}/>*/}

@@ -1,0 +1,10 @@
+.table-hover-image{
+    transition: 100ms all;
+    opacity: 0;
+}
+.table-th-hov{
+    cursor: pointer;
+}
+.table-th-hov:hover .table-hover-image{
+    opacity: 1;
+}
