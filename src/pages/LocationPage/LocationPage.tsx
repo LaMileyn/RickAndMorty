@@ -26,12 +26,12 @@ const LocationPage: FC = (props) => {
                 }
             </Row>
             <Container className="p-lg-5 bg-white rounded-3">
-                <Row>
-                    <Col lg={4} md={12}>
+                <Row >
+                    <Col md={4}>
                         <Image className="w-100 rounded-3"
-                               src="https://phonoteka.org/uploads/posts/2021-04/1619154220_10-phonoteka_org-p-rik-i-morti-fon-11.jpg"/>
+                               src="https://get.wallhere.com/photo/illustration-planet-space-sky-Earth-atmosphere-Rick-and-Morty-universe-screenshot-computer-wallpaper-outer-space-astronomical-object-104692.jpg"/>
                     </Col>
-                    <Col md={12} lg={8}>
+                    <Col md={{ span: 7, offset: 1 }}>
                         {
                             loading
                                 ? (

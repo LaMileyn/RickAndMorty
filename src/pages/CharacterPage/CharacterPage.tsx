@@ -5,18 +5,23 @@ import {$currentCharacter, $currentCharacterEpisodes} from "../../effector/store
 import {getCharacter} from "../../effector/effects/effects";
 import {Col, Container, Image, Row} from "react-bootstrap";
 import DataInfoLine from "../../components/DataInfoLine/DataInfoLine";
+import EpisodeCard from "../../components/EpisodeCard/EpisodeCard";
+import GoBack from "../../components/GoBack/GoBack";
 
 const CharacterPage : FC = (props) => {
 
     const {characterId} = useParams()
     const character = useStore($currentCharacter)
+    const loading = useStore(getCharacter.pending)
     const characterEpisodes = useStore($currentCharacterEpisodes)
+
     useEffect( () => {
         getCharacter(characterId)
     } ,[])
 
     return (
         <Container>
+            <Row><GoBack /></Row>
             <Row className="pb-5">
                 <h1 className="text-white">Персонаж {character?.name}</h1>
             </Row>
@@ -35,7 +40,14 @@ const CharacterPage : FC = (props) => {
                     </Col>
                 </Row>
                 <Row className="pt-5">
-                    <h2>Эпизоды:</h2>
+                    <h2 className="mb-lg-5">Эпизоды:</h2>
+                    {
+                        loading
+                            ? ( <div>loading</div>)
+                            : characterEpisodes.map( episode => (
+                                <EpisodeCard key={episode.id} episode={episode}/>
+                            ))
+                    }
                     {/*<EpisodesCards episodesList={episodes}/>*/}
                 </Row>
             </Container>
