@@ -4,7 +4,7 @@ import {
     getCharacter,
     getCharacterEpisodes,
     getCurrentEpisodeCharacters,
-    getCurrentLocationCharacters, getLocation
+    getCurrentLocationCharacters, getEpisodeData, getLocation
 } from "../effects/effects";
 import {IEpisodeType} from "../../types/episodes/episodes";
 import {ICharacter} from "../../types/characters/characters";
@@ -25,7 +25,9 @@ export const $seasonsCount = $allTheEpisodesData.map( (state,lastState) => {
 // данные персонажей текущего эпизода
 export const $currentEpisodeCharacters = createStore<Array<ICharacter>>([])
     .on( getCurrentEpisodeCharacters.doneData, (_, data) => data)
-
+// данные о конкретном эпизоде
+export const $currentEpisodeData = createStore<IEpisodeType | null>(null)
+    .on( getEpisodeData.doneData, (state,data) => data)
 //////---------------------------- хранения данные связанных с сезонами / эпизодами
 
 //////---------------------------- хранения данные связанных с персонажами
