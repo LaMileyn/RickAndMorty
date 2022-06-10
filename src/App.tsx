@@ -7,6 +7,7 @@ import backgroundTop from './files/photos/head.jpg'
 import backCenter from './files/photos/bg.jpg'
 import MainPage from "./pages/MainPage/MainPage";
 import EpisodeDetailPage from "./pages/EpisodeDetailPage/EpisodeDetailPage";
+import LocationPage from "./pages/LocationPage/LocationPage";
 
 
 const App: FC = () => {
@@ -28,7 +29,7 @@ const App: FC = () => {
                         <Route path="main" element={<MainPage/>}/>
                         <Route path="episode-info/:episodeId" element={<EpisodeDetailPage/>}/>
                         {/*<Route path="character-info/:characterId" element={<CharacterPage/>}/>*/}
-                        {/*<Route path="location-info/:locationId" element={<LocationPage/>}/>*/}
+                        <Route path="location-info/:locationId" element={<LocationPage />}/>
                         <Route path="*" element={<div>404 - страница не найдена</div>}/>
                     </Route>
                 </Routes>
