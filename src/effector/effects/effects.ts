@@ -54,6 +54,15 @@ export const getAllEpisodes= createEffect<string,Array<IEpisodeType>,Error>(asyn
     await getTheData(baseURL + "episode")
     return result
 })
+
+// получение данных о конкретном эпизоде
+
+export const getEpisodeData = createEffect<string | undefined,IEpisodeType,Error>( async (urlId) =>{
+    let { data } = await axios.get(`https://rickandmortyapi.com/api/episode/${urlId}`);
+    await getCurrentEpisodeCharacters(data.characters)
+    return data
+})
+
 // запрос на получение эпизодов у конкретного персонажа
 export const getCharacterEpisodes = createEffect<Array<string>, Array<IEpisodeType> ,Error>( async ( urlsList ) => {
     let data = await Promise.all(urlsList.map( url => axios.get<IEpisodeType>(url)))
