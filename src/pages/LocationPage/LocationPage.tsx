@@ -6,6 +6,7 @@ import {useStore} from "effector-react";
 import {$currentLocationCharacters, $location} from "../../effector/stores/stores";
 import DataInfoLine from "../../components/DataInfoLine/DataInfoLine";
 import CharacterCard from "../../components/CharacterCard/CharacterCard";
+import GoBack from "../../components/GoBack/GoBack";
 
 const LocationPage: FC = (props) => {
 
@@ -19,6 +20,7 @@ const LocationPage: FC = (props) => {
 
     return (
         <Container>
+            <Row><GoBack/></Row>
             <Row className="pb-5">
                 {loading
                     ? <Placeholder xs={6} bg="dark" style={{height: "15px"}} animation='wave'/>
