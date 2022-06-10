@@ -9,6 +9,8 @@ export interface IEpisodeType {
     url: string,
     created: string
 }
+
+
 // episode
 // запрос на все эпизоды с пагинацией  возвращает поля results ( наши нужные данные ) и инфо ( след. страница)
 export interface IGetCurrentPortionEpisodes {

@@ -1,7 +1,7 @@
 import React, {FC, useMemo, useState} from 'react';
 import {IEpisodeType} from "../../types/episodes/episodes";
 import {Image, Table} from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import hide from './../../files/icons/hide.png'
 import './SeasonTableData.css'
 
@@ -10,7 +10,8 @@ interface IProps {
     filterText: string
 }
 
-const SeasonTableData : FC<IProps> = ({ data, filterText}) => {
+const thData = [["id", "id"], ["name", "Название"], ["air_date", "Дата выхода"], ["episode", "Эпизод"], ["characters", "Персонажи"]]
+const SeasonTableData: FC<IProps> = ({data, filterText}) => {
 
     //-----------------------------------------------------------------------
     // текущий критерий сортировки по которому сортируются ячейки в таблице
@@ -28,7 +29,7 @@ const SeasonTableData : FC<IProps> = ({ data, filterText}) => {
         }
     }, [filterText, data]);
     // фукнция для того чтобы скрыть колонки в таблице
-    const thHideHandler = (e : any) => {
+    const thHideHandler = (e: any) => {
         // не дает делать фильтрацию при клике на иконку
         e.stopPropagation()
         const current = e.target.closest('th').innerText.trim()
@@ -43,7 +44,7 @@ const SeasonTableData : FC<IProps> = ({ data, filterText}) => {
         if (currentSortType !== sortType) {
             setEqualSortType(false)
         } else {
-            setEqualSortType( prev => !prev)
+            setEqualSortType(prev => !prev)
         }
         setCurrentSortType(sortType)
     }
@@ -77,28 +78,17 @@ const SeasonTableData : FC<IProps> = ({ data, filterText}) => {
         <Table striped bordered hover responsive>
             <thead>
             <tr>
-                <th
-                    onClick={(event) => thSortHandler("id")}
-                    className='d-flex align-items-center gap-1 table-th-hov'>id <Image onClick={thHideHandler}
-                                                                                       className="table-hover-image"
-                                                                                       width={20} height={20}
-                                                                                       src={hide}/></th>
-                <th
-                    onClick={(event) => thSortHandler("name")}
-                    className="table-th-hov">Название <Image onClick={thHideHandler} className="table-hover-image"
-                                                             width={20} height={20} src={hide}/></th>
-                <th
-                    onClick={(event) => thSortHandler("air_date")}
-                    className="table-th-hov">Дата выхода <Image onClick={thHideHandler} className="table-hover-image"
-                                                                width={20} height={20} src={hide}/></th>
-                <th
-                    onClick={(event) => thSortHandler("episode")}
-                    className="table-th-hov">Эпизод <Image onClick={thHideHandler} className="table-hover-image"
-                                                           width={20} height={20} src={hide}/></th>
-                <th
-                    onClick={(event) => thSortHandler("characters")}
-                    className="table-th-hov">Персонажи <Image onClick={thHideHandler} className="table-hover-image"
-                                                              width={20} height={20} src={hide}/></th>
+                {
+                    thData.map(([forSort, thText]) => (
+                        <th
+                            onClick={(event) => thSortHandler(forSort)}
+                            className='align-items-center gap-1 table-th-hov'>{thText}<Image
+                            onClick={thHideHandler}
+                            className="table-hover-image ms-3"
+                            width={20} height={20}
+                            src={hide}/></th>
+                    ))
+                }
             </tr>
             </thead>
             <tbody>

@@ -13,7 +13,7 @@ const MainPage : FC = (props) => {
 
 
     useEffect( () => {
-        getAllEpisodes('f')
+        if ( data.length === 0) getAllEpisodes('f')
     },[])
 
 
