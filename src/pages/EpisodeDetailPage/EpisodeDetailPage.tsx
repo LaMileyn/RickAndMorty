@@ -5,23 +5,25 @@ import {$currentEpisodeCharacters, $currentEpisodeData} from "../../effector/sto
 import {getEpisodeData} from "../../effector/effects/effects";
 import {Card, Col, Container, Image, Placeholder, Row} from "react-bootstrap";
 import CharacterCard from "../../components/CharacterCard/CharacterCard";
+import GoBack from "../../components/GoBack/GoBack";
 
-const EpisodeDetailPage : FC = (props) => {
+const EpisodeDetailPage: FC = (props) => {
 
-    const {episodeId}  = useParams()
+    const {episodeId} = useParams()
     const currentEpisode = useStore($currentEpisodeData)
     const loading = useStore(getEpisodeData.pending)
     const currentEpisodeCharacters = useStore($currentEpisodeCharacters)
 
-    useEffect( () => {
+    useEffect(() => {
         getEpisodeData(episodeId)
-    },[])
+    }, [])
 
     return (
         <Container>
+            <Row><GoBack/></Row>
             <Row className="pb-5">
-                { loading
-                    ? <Placeholder xs={6} bg="dark" style={{ height : "15px"}} animation='wave'/>
+                {loading
+                    ? <Placeholder xs={6} bg="dark" style={{height: "15px"}} animation='wave'/>
                     : <h1 className="mb-0 text-white">Эпизод {currentEpisode?.name}</h1>
                 }
             </Row>
@@ -36,12 +38,12 @@ const EpisodeDetailPage : FC = (props) => {
             </Row>
             <Row className="pb-3 pt-5 align-items-center">
                 <Col md={2}>
-                    { loading
-                        ? <Placeholder xs={6} bg="dark" style={{ height : "15px"}} animation='wave'/>
+                    {loading
+                        ? <Placeholder xs={6} bg="dark" style={{height: "15px"}} animation='wave'/>
                         : <h3 className="mb-0 text-white">Дата выхода:</h3>
                     }
                 </Col>
-                { !loading && <Col md={3} className='text-secondary fs-3'>{currentEpisode?.air_date}</Col> }
+                {!loading && <Col md={3} className='text-secondary fs-3'>{currentEpisode?.air_date}</Col>}
             </Row>
 
             <Row className="pb-5 pt-5 align-items-center">
@@ -51,7 +53,7 @@ const EpisodeDetailPage : FC = (props) => {
             </Row>
             <Row>
                 {
-                    currentEpisodeCharacters?.map( character => ( <CharacterCard character={character}/> ) )
+                    currentEpisodeCharacters?.map(character => (<CharacterCard character={character}/>))
                 }
             </Row>
         </Container>
