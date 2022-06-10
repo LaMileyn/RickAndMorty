@@ -48,7 +48,6 @@ const CharacterPage : FC = (props) => {
                                 <EpisodeCard key={episode.id} episode={episode}/>
                             ))
                     }
-                    {/*<EpisodesCards episodesList={episodes}/>*/}
                 </Row>
             </Container>
         </Container>
