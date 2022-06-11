@@ -72,7 +72,7 @@ const LocationPage: FC = (props) => {
                 <Row className="mt-lg-5">
                     <h2 className="mb-3">Резиденты</h2>
                     {
-                        currentLocationCharacters?.map( character => ( <CharacterCard character={character}/> ) )
+                        currentLocationCharacters?.map( character => ( <CharacterCard key={character.id} character={character}/> ) )
                     }
                 </Row>
             </Container>
