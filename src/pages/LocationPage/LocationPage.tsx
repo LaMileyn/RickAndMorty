@@ -7,6 +7,7 @@ import {$currentLocationCharacters, $location} from "../../effector/stores/store
 import DataInfoLine from "../../components/DataInfoLine/DataInfoLine";
 import CharacterCard from "../../components/CharacterCard/CharacterCard";
 import GoBack from "../../components/GoBack/GoBack";
+import Loader from "../../components/Loader/Loader";
 
 const LocationPage: FC = (props) => {
 
@@ -18,6 +19,15 @@ const LocationPage: FC = (props) => {
         getLocation(locationId)
     }, [])
 
+    if (loading) {
+        return (
+            <Container className="bg-transparent">
+                <Row style = {{ width : '70px', height : '70px'}}>
+                    <Loader/>
+                </Row>
+            </Container>
+        )
+    }
     return (
         <Container>
             <Row><GoBack/></Row>

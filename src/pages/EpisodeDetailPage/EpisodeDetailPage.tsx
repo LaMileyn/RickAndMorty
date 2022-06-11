@@ -6,6 +6,7 @@ import {getEpisodeData} from "../../effector/effects/effects";
 import {Card, Col, Container, Image, Placeholder, Row} from "react-bootstrap";
 import CharacterCard from "../../components/CharacterCard/CharacterCard";
 import GoBack from "../../components/GoBack/GoBack";
+import Loader from "../../components/Loader/Loader";
 
 const EpisodeDetailPage: FC = (props) => {
 
@@ -18,14 +19,20 @@ const EpisodeDetailPage: FC = (props) => {
         getEpisodeData(episodeId)
     }, [])
 
+    if (loading) {
+        return (
+            <Container className="bg-transparent">
+                <Row style = {{ width : '70px', height : '70px'}}>
+                    <Loader/>
+                </Row>
+            </Container>
+        )
+    }
     return (
         <Container>
             <Row><GoBack/></Row>
             <Row className="pb-5">
-                {loading
-                    ? <Placeholder xs={6} bg="dark" style={{height: "15px"}} animation='wave'/>
-                    : <h1 className="mb-0 text-white">Эпизод {currentEpisode?.name}</h1>
-                }
+                <h1 className="mb-0 text-white">Эпизод {currentEpisode?.name}</h1>
             </Row>
             <Row>
                 <Col xl={12}>
@@ -38,12 +45,9 @@ const EpisodeDetailPage: FC = (props) => {
             </Row>
             <Row className="pb-3 pt-5 align-items-center">
                 <Col md={2}>
-                    {loading
-                        ? <Placeholder xs={6} bg="dark" style={{height: "15px"}} animation='wave'/>
-                        : <h3 className="mb-0 text-white">Дата выхода:</h3>
-                    }
+                    <h3 className="mb-0 text-white">Дата выхода:</h3>
                 </Col>
-                {!loading && <Col md={3} className='text-secondary fs-3'>{currentEpisode?.air_date}</Col>}
+                <Col md={3} className='text-secondary fs-3'>{currentEpisode?.air_date}</Col>
             </Row>
 
             <Row className="pb-5 pt-5 align-items-center">

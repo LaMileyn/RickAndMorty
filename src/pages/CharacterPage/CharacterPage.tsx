@@ -7,6 +7,7 @@ import {Col, Container, Image, Row} from "react-bootstrap";
 import DataInfoLine from "../../components/DataInfoLine/DataInfoLine";
 import EpisodeCard from "../../components/EpisodeCard/EpisodeCard";
 import GoBack from "../../components/GoBack/GoBack";
+import Loader from "../../components/Loader/Loader";
 
 const CharacterPage : FC = (props) => {
 
@@ -19,6 +20,15 @@ const CharacterPage : FC = (props) => {
         getCharacter(characterId)
     } ,[])
 
+    if (loading) {
+        return (
+            <Container className="bg-transparent">
+                <Row style = {{ width : '70px', height : '70px'}}>
+                    <Loader/>
+                </Row>
+            </Container>
+        )
+    }
     return (
         <Container>
             <Row><GoBack /></Row>
