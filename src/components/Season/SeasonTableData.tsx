@@ -81,6 +81,7 @@ const SeasonTableData: FC<IProps> = ({data, filterText}) => {
                 {
                     thData.map(([forSort, thText]) => (
                         <th
+                            key = {forSort}
                             onClick={(event) => thSortHandler(forSort)}
                             className='align-items-center gap-1 table-th-hov'>{thText}<Image
                             onClick={thHideHandler}

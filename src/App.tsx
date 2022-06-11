@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
-import {Routes, Route} from "react-router-dom";
+import React, {FC, useEffect} from 'react';
+import {Routes, Route, useNavigate, useLocation} from "react-router-dom";
 import {Container, Image, Row} from "react-bootstrap";
 import MainLayout from "./components/MainLayout/MainLayout";
-// photos for Background site
+import { UNSAFE_NavigationContext } from "react-router-dom";
 import backgroundTop from './files/photos/head.jpg'
 import backCenter from './files/photos/bg.jpg'
 import MainPage from "./pages/MainPage/MainPage";
@@ -12,6 +12,14 @@ import CharacterPage from "./pages/CharacterPage/CharacterPage";
 
 
 const App: FC = () => {
+
+    const location = useLocation()
+
+    useEffect( () => {
+        window.scrollTo(0,0)
+    },[location])
+
+
     return (
         <Container fluid>
             <Row>
