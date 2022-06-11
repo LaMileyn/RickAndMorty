@@ -57,7 +57,7 @@ const EpisodeDetailPage: FC = (props) => {
             </Row>
             <Row>
                 {
-                    currentEpisodeCharacters?.map(character => (<CharacterCard character={character}/>))
+                    currentEpisodeCharacters?.map(character => (<CharacterCard key={character.id} character={character}/>))
                 }
             </Row>
         </Container>
