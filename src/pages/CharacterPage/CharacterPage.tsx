@@ -36,9 +36,10 @@ const CharacterPage : FC = (props) => {
                 <h1 className="text-white">Персонаж {character?.name}</h1>
             </Row>
             <Container className="p-lg-5 bg-white rounded-3">
-                <Row>
-                    <Col md={4}><Image src={character?.image} className="rounded-3"/></Col>
-                    <Col md={8}>
+                <Row className="row-top-block">
+                    <Col md={12} lg={4}><Image src={character?.image}
+                                               className="rounded-3 w-100 large-image-margin"/></Col>
+                    <Col md={12} lg={8}>
                         <h3 className="pb-2">{character?.name}</h3>
                         <DataInfoLine headline={"id"} headlineData={character?.id}/>
                         <DataInfoLine headline={"Cтатус"} headlineData={character?.status}/>

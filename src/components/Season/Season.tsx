@@ -16,7 +16,7 @@ const Season : FC<IProps> = ({ data, currentSeason}) => {
         <Container className="p-4 bg-white border-bottom border-1">
             {/* Информация про сезон и поиск эпизода */}
             <Row className="mb-4 align-items-center" lg={12}>
-                <Col lg={5} md={12} className='d-flex align-items-center'>
+                <Col lg={5} md={12} className='d-flex align-items-center margin-small-season'>
                     <Image
                         width={50}
                         height={71}

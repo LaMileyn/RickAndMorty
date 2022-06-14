@@ -41,7 +41,7 @@ export const getLocation = createEffect<string | undefined,ILocation,Error>( asy
 /////------------------------- Запросы связанные с Эпизодами
 
 // запрос на получения всех серий и сезонов
-export const getAllEpisodes= createEffect<string,Array<IEpisodeType>,Error>(async () => {
+export const getAllEpisodes= createEffect(async () => {
     let result : IEpisodeType[] = []
     const getTheData = async (url : string) => {
         // данная фунцкия вызываеться и принимает в свой параметр url адрес для получения эпизодов
