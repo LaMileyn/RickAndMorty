@@ -9,6 +9,7 @@ import MainPage from "./pages/MainPage/MainPage";
 import EpisodeDetailPage from "./pages/EpisodeDetailPage/EpisodeDetailPage";
 import LocationPage from "./pages/LocationPage/LocationPage";
 import CharacterPage from "./pages/CharacterPage/CharacterPage";
+import "./App.css"
 
 
 const App: FC = () => {
