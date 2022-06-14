@@ -38,12 +38,12 @@ const LocationPage: FC = (props) => {
                 }
             </Row>
             <Container className="p-lg-5 bg-white rounded-3">
-                <Row >
-                    <Col md={4}>
-                        <Image className="w-100 rounded-3"
+                <Row className="row-top-block">
+                    <Col md={12} lg={4}>
+                        <Image className="w-100 rounded-3 large-image-margin"
                                src="https://get.wallhere.com/photo/illustration-planet-space-sky-Earth-atmosphere-Rick-and-Morty-universe-screenshot-computer-wallpaper-outer-space-astronomical-object-104692.jpg"/>
                     </Col>
-                    <Col md={{ span: 7, offset: 1 }}>
+                    <Col md={{ span: 12, offset: 0 }} lg={8}>
                         {
                             loading
                                 ? (
@@ -69,7 +69,7 @@ const LocationPage: FC = (props) => {
                     </Col>
                 </Row>
             {/*     ВЫВОД ПЕРСОНАЖЕЙ*/}
-                <Row className="mt-lg-5">
+                <Row className="mt-5">
                     <h2 className="mb-3">Резиденты</h2>
                     {
                         currentLocationCharacters?.map( character => ( <CharacterCard key={character.id} character={character}/> ) )

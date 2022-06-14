@@ -14,18 +14,19 @@ const EpisodeCard: FC<IProps> = ({ episode}) => {
     const navigate = useNavigate()
 
     return (
-        <Row className="py-3 align-items-center">
-            <Col md="3">
-                <Image src={photoEpisode} className="rounded-3"/>
+        <Row className="py-3 align-items-center" onClick={ () => navigate(`/episode-info/${episode.id}`)}
+             style={ { cursor : "pointer"}} >
+            <Col xl="3" lg={4} md ={5} sm={12}>
+                <Image src={photoEpisode} className="rounded-3 w-100 image-margin"/>
             </Col>
-            <Col md="8">
+            <Col xl="9" lg={8} md ={7} sm={12}>
                 <h4>{episode.name}</h4>
                 <p>Сезон {episode.episode.split("E")[0].split("S")[1]} / Серия {episode.episode.split("E")[1]}</p>
                 <p>{episode.air_date}</p>
             </Col>
-            <Col md="1" className="justify-content-end d-flex">
-                <Image onClick={ () => navigate(`/episode-info/${episode.id}`)} src={watchIcon} style={{ cursor : "pointer"}}  width={20} height={20}/>
-            </Col>
+            {/*<Col xl="1" lg={1} md ={1} sm ={12} className="justif-start justify-content-end d-flex">*/}
+            {/*    <Image   src={watchIcon} style={{ cursor : "pointer"}}  width={20} height={20}/>*/}
+            {/*</Col>*/}
         </Row>
 
     );

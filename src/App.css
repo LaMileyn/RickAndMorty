@@ -2,4 +2,19 @@
     .margin-small-season{
         margin-bottom: 20px;
     }
+/*   padding character and location pages top block */
+    .row-top-block{
+        padding-top: 30px;
+    }
+    .large-image-margin{
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 768px){
+    .row-top-block{
+        gap: 2rem;
+    }
+    .image-margin{
+        margin-bottom: 15px;
+    }
 }
